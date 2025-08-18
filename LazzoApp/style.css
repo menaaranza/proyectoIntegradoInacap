@@ -1,0 +1,45 @@
+body{
+    background-color: #FFB503;
+}
+
+.text{
+    color:white;
+    font-family: "Tajawal", sans-serif;    
+    font-weight: 500px;
+    font-style: medium;
+    font-size: 100%;
+    line-height: 100%;
+    letter-spacing: 0.1%;
+    text-align: center;
+}
+
+.disposicion{
+    width: 357px;
+    height: 69px;
+    top: 550px;
+    left: 20px;
+}
+
+.logo{
+    width: 284.85px;
+    height: 161px;
+    top: 223px;
+    left: 69px;
+}
+
+.circulo{
+    width: 244px;
+    height: 244px;
+    top: -16px;
+    left: -78px;
+}
+
+.triangulo{
+    width: 308px;
+    height: 308px;
+    top: -9px;
+    left: 219px;
+    border-top-right-radius: 10px;
+    rotate: 11.84;
+    
+}
