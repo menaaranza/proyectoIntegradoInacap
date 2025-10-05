@@ -1,0 +1,97 @@
+/* Reset */
+*{box-sizing:border-box;margin:0}
+html,body{height:100%}
+img{display:block;max-width:100%;height:auto}
+
+body{ font-family:"Tajawal", system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;background:#FFB503 }
+.tag{ font-weight:700; } /* ya la usas en blanco */
+
+
+/* Lienzo (fondo sólido + centrado) */
+.hero{
+    min-height:100vh;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    position:relative;
+    overflow:hidden;
+    background:#FFB503;
+}
+
+/* Centro: logo + texto */
+.center{
+    z-index:2;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    text-align:center;
+    color:#fff;
+    gap:1rem;
+}
+.logo{ width:clamp(160px,26vw,300px); height:auto; filter:brightness(1000%); } /* logo blanco */
+.tag{
+    margin-top:clamp(12px,2.5vh,20px);         /* baja el texto */
+    font-weight:700;
+    font-size:clamp(12px,1.2vw,14px);
+    line-height:1.25;
+    letter-spacing:.2px;
+    text-shadow:0 1px 0 rgba(0,0,0,.08);
+}
+
+/* Filas de esquinas (Flexbox) */
+.row{
+    position:absolute; left:0; right:0;
+    display:flex; justify-content:space-between;
+    pointer-events:none; z-index:1;
+    opacity:.45; filter:contrast(1.05) saturate(1.05) brightness(1.02);
+}
+.top{    top:0;    padding:2.4vh 2.8vw 0; }
+.bottom{ bottom:0; padding:0 2.8vw 2.4vh; align-items:flex-end; }
+
+/* Tamaños/posiciones — Escritorio */
+@media (min-width:992px){
+    .circulo{   width:34vmin; transform:translate(-18%,-18%); }
+    .triangulo{ width:28vmin; transform:rotate(12deg) translate(18%,-18%); }
+    .estrella{  width:26vmin; transform:translate(-18%,18%); }
+    .rectangulo{width:46vmin; transform:rotate(12deg) translate(18%,30%); } /* más abajo */
+}
+
+/* Tablet/Móvil */
+@media (max-width:991px){
+    .logo{ width:clamp(150px,46vw,240px) }
+    .tag{  margin-top:clamp(14px,3.2vh,28px); font-size:clamp(12px,3.6vw,14px) }
+
+    .top{    padding:3vh 5vw 0 }
+    .bottom{ padding:0 5vw 3vh }
+
+    .circulo{   width:60vmin; transform:translate(-20%,-20%) }
+    .triangulo{ width:50vmin; transform:rotate(12deg) translate(20%,-20%) }
+    .estrella{  width:50vmin; transform:translate(-20%,20%) }
+    .rectangulo{width:74vmin; transform:rotate(12deg) translate(20%,38%) } /* más abajo en móvil */
+}
+
+/* Ajuste fino opcional del rectángulo (sube/baja con el segundo valor)
+@media (min-width:992px){ .rectangulo{ transform:rotate(12deg) translate(18%,34%); } }
+*/
+
+/* ——— Más visibilidad para las figuras ——— */
+.row{ opacity:1; }  /* quita atenuado global */
+
+.circulo,.triangulo,.estrella,.rectangulo{
+    opacity:.95;                              /* antes ~.45 */
+    filter: contrast(1.25) saturate(1.35) brightness(1.04);
+    /* Si las quieres aún más marcadas, descomenta la siguiente línea: */
+    /* mix-blend-mode:multiply; */            /* da más cuerpo sobre #FFB503 */
+}
+
+@media (max-width:991px){
+    .circulo,.triangulo,.estrella,.rectangulo{ opacity:.9; }
+}
+
+/* Estrella un poco más arriba */
+@media (min-width:992px){
+  .estrella{ transform: translate(-18%, 8%) !important; }  /* antes ~18% */
+}
+@media (max-width:991px){
+  .estrella{ transform: translate(-20%, 10%) !important; } /* antes ~20% */
+}

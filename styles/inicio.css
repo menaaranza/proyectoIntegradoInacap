@@ -1,0 +1,56 @@
+/* Reset */
+*{box-sizing:border-box;margin:0}
+html,body{height:100%}
+img{display:block;max-width:100%;height:auto}
+body{font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;background:#fff}
+
+/* Lienzo: Flexbox centrado */
+.hero{
+    min-height:100vh;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    position:relative;
+    overflow:hidden;
+}
+
+/* Centro */
+.center{z-index:2;display:flex;align-items:center;justify-content:center}
+.logo{width:clamp(180px,24vw,280px);height:auto}
+
+/* Filas superior/inferior: Flexbox a esquinas */
+.row{
+    position:absolute; left:0; right:0;
+    display:flex; justify-content:space-between; pointer-events:none;
+    z-index:1; opacity:.9; filter:contrast(1.25) saturate(1.35);
+}
+.top{top:0; padding:2.5vh 3.5vw 0}
+.bottom{bottom:0; padding:0 3.5vw 2.5vh}
+
+/* Tamaños base PC */
+@media (min-width:992px){
+    .circulo{   width:42vmin; transform:translate(-12%,-12%) }
+    .triangulo{ width:36vmin; transform:rotate(10deg) translate(12%,-12%) }
+    .estrella{  width:36vmin; transform:translate(-12%,12%) }
+    /* RECTÁNGULO MÁS ABAJO EN PC */
+    .rectangulo{width:56vmin; transform:rotate(12deg) translate(12%,48%) }
+}
+
+/* Tablet/Móvil */
+@media (max-width:991px){
+    .logo{width:clamp(160px,56vw,240px)}
+    .top{padding:3vh 5vw 0}
+    .bottom{padding:0 5vw 3vh}
+
+    .circulo{   width:64vmin; transform:translate(-16%,-16%) }
+    .triangulo{ width:56vmin; transform:rotate(10deg) translate(16%,-16%) }
+    .estrella{  width:56vmin; transform:translate(-18%,18%) }
+    /* RECTÁNGULO MÁS ABAJO EN MÓVIL */
+    .rectangulo{width:78vmin; transform:rotate(12deg) translate(18%,42%) }
+}
+
+/* Mobile estrecho */
+@media (max-width:480px){
+    .center{transform:translateY(2vh)}
+    .rectangulo{transform:rotate(12deg) translate(18%,48%)}
+}
