@@ -1,27 +1,33 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../styles/estiloLogin.css">
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Lazzoapp — Demo</title>
+
+    <!-- Fuente -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@200;300;400;500;700;800;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;700;800&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="../styles/estiloLogin.css" />
 </head>
 <body>
-    <div>
-        <div><img src="../assets/svg/circulo.svg" alt="circulo en parte superior" class="circulo"></div>
-        <div><img src="../assets/svg/triangulo.svg" alt="triangulo en parte superior" class="triangulo"></div>
-        <div><img src="../assets/imagenes/lazzovert.png" alt="Logo de lazzo" class="logo"></div>
-        <div> <img src="../assets/svg/estrella.svg" alt="estrella en parte inferior" class="estrella"></div>
-        <div><img src="../assets/svg/rectangulo.svg" alt="rectangulo en parte inferior" class="rectangulo"></div>    
+    <main class="hero">
+    <img src="../assets/svg/circulo.svg"    class="circulo"   alt="Circulo">
+    <img src="../assets/svg/triangulo.svg"  class="triangulo" alt="Triangulo">
+    <img src="../assets/svg/estrella.svg"   class="estrella"  alt="Estrella">
+    <img src="../assets/svg/rectangulo.svg" class="rectangulo" alt="Rectangulo">
+
+    <div class="contenido">
+        <img src="../assets/imagenes/lazzovert.png" class="logo" alt=" Logo Lazzoapp">
+        <p class="tagline">Haga clic en cualquier parte para empezar la demostración</p>
     </div>
 
-    <div class="disposicion">
-        <p class="text">Haga click en cualquier parte para comenzar con la demostración</p>
-    </div>
-    
+    <a href="#" class="overlay" aria-label="Empezar"></a>
+</main>
 
-    <script src="../javascript/app.js"></script>
+
+    <script src="../javascript/app.js" defer></script>
 </body>
 </html>

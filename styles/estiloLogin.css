@@ -1,45 +1,131 @@
-body{
-    background-color: #FFB503;
+@import url('https://fonts.googleapis.com/css2?family=Tajawal:wght@200;300;400;500;700;800;900&display=swap');
+
+/* ===== Reset breve ===== */
+*,*::before,*::after{ box-sizing:border-box; }
+*{ margin:0; }
+html,body{ height:100%; }
+img,svg,video,canvas{ display:block; max-width:100%; height:auto; }
+input,button,textarea,select{ font:inherit; }
+:where(p,h1,h2,h3,h4,h5,h6){ overflow-wrap:anywhere; }
+
+:root{
+    --bg1:#FFB503;
+    --bg2:#F6A50F;
+    --text:#fff;
 }
 
-.text{
-    color:white;
-    font-family: "Tajawal", sans-serif;    
-    font-weight: 500px;
-    font-style: medium;
-    font-size: 100%;
-    line-height: 100%;
-    letter-spacing: 0.1%;
-    text-align: center;
+/* Lienzo */
+.hero{
+    position:relative;
+    min-height:100svh;
+    overflow:hidden;
+    background:linear-gradient(160deg,var(--bg1) 0%, var(--bg2) 100%);
 }
 
-.disposicion{
-    width: 357px;
-    height: 69px;
-    top: 550px;
-    left: 20px;
+/* Contenido centrado */
+.contenido{
+    position:absolute;
+    top:50%; left:50%;
+    transform:translate(-50%,-50%);
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    gap:14px;
+    text-align:center;
+    color:var(--text);
+    max-width:42ch;
+    z-index:2;
 }
 
-.logo{
-    width: 284.85px;
-    height: 161px;
-    top: 223px;
-    left: 69px;
+.logo{ width:min(28vw, 260px); height:auto; }
+.tagline{
+    font-weight:600;
+    line-height:1.35;
+    font-size:clamp(1rem,1.15vw,1.25rem);
 }
 
-.circulo{
-    width: 244px;
-    height: 244px;
-    top: -16px;
-    left: -78px;
+/* Capa clicable */
+.overlay{ position:absolute; inset:0; z-index:3; }
+
+/* Figuras visibles y dentro del viewport */
+.circulo,.triangulo,.estrella,.rectangulo{
+    position:absolute;
+    z-index:1;
+    pointer-events:none;
+    user-select:none;
+    opacity:.78;                          /* antes ~.55 */
+    filter: brightness(1.25) contrast(1.08) saturate(1.15);
+  /* si prefieres oscurecer en vez de aclarar: filter:brightness(.9) contrast(1.15); */
 }
 
+.circulo{ top:-10%; left:-8%;  width:36vmin; }
+.estrella{ bottom:-4%; left:-3%; width:30vmin; }
+
+
+/* quita el outline de depuración si sigue activo */
+.circulo,.triangulo,.estrella,.rectangulo{ outline: none !important; }
+
+/* PC */
+.rectangulo{
+    bottom:-12%;   /* antes -6% o -4% */
+    right:-2%;
+    width:52vmin;
+    transform:rotate(12deg);
+    opacity:.9;
+    filter:brightness(.85) contrast(1.25) saturate(1.1);
+    pointer-events:none; user-select:none; z-index:1;
+}
+
+/* 1280–1440 px de ancho: un poco más abajo aún */
+@media (min-width:1280px) and (max-width:1440px){
+    .rectangulo{ bottom:-14%; right:-3%; }
+}
+
+/* Mobile: mantén visibilidad sin invadir centro */
+@media (max-width:991px){
+    .rectangulo{ bottom:-16%; right:-8%; width:66vmin; }
+}
+
+/* PC */
 .triangulo{
-    width: 308px;
-    height: 308px;
-    top: -9px;
-    left: 219px;
-    border-top-right-radius: 10px;
-    rotate: 11.84;
-    
+    top:-4%;     /* antes 4% */
+    right:-2%;
+    width:28vmin;
+    transform:rotate(10deg);
+    opacity:.78;
+    filter:brightness(1.15) contrast(1.08) saturate(1.1);
 }
+
+/* 1280–1440 px: un poco más arriba aún */
+@media (min-width:1280px) and (max-width:1440px){
+    .triangulo{ top:-6%; right:-3%; }
+}
+
+/* Mobile: manténlo fuera del centro pero visible */
+@media (max-width:991px){
+    .triangulo{ top:-10%; right:-8%; width:40vmin; }
+}
+
+
+p{
+    font-family: 'Tajawal', sans-serif;
+}
+
+/* Mobile-first: mantiene centro y reduce shapes */
+@media (max-width: 991px){
+    .logo{ width:min(56vw, 220px); }
+    .tagline{ font-size:clamp(.95rem, 3.5vw, 1.1rem); max-width:34ch; }
+
+    .circulo{   top:-12%; left:-18%; width:48vmin; }
+    .triangulo{ top:-10%; right:-18%; width:40vmin; }
+    .estrella{  bottom:-12%; left:-12%; width:38vmin; }
+    .rectangulo{bottom:-14%; right:-20%; width:66vmin; }
+}
+
+/* Opcional: micro-animación */
+@media (prefers-reduced-motion:no-preference){
+    .triangulo,.rectangulo{ transition:transform .6s ease; }
+    .hero:hover .triangulo{ transform:translateY(-2%) rotate(10deg); }
+    .hero:hover .rectangulo{ transform:translateY(2%)  rotate(14deg); }
+}
+
